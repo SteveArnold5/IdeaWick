@@ -1,0 +1,28 @@
+<%- model_class = Site.new.class -%>
+<h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+<% if @sites.length == 0 %>
+	<br/>No sites have been created any sites yet.
+<% 
+   else 
+%>
+	<table class="table table-striped">
+	  <thead>
+	    <tr>
+	      <th><%= model_class.human_attribute_name(:subdomain) %></th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <% @sites.each do |site| %>
+	      <tr>
+	        <td>
+				<% host = site.subdomain + '.' + request.domain %>
+	        	<%= link_to host, root_url(:host => host) %>
+	        </td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+	<%= paginate @sites %>
+<%
+   end
+%>

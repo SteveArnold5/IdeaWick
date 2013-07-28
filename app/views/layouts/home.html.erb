@@ -1,0 +1,34 @@
+<%= render :partial => 'layouts/layout_top' %>
+<style>
+	@media (max-width: 480px) 
+	{
+		.outer_box
+		{
+			width:100%;
+			margin:0;
+		}
+		.home_header
+		{
+			padding: 10px;
+		}
+		ul.main
+		{
+			margin:0;
+		}
+		ul.main li
+		{
+			font-size:1.2em;
+			margin-left:10px;
+		}
+		body
+		{
+			padding:0;
+		}
+		h2
+		{
+			font-size:20px;
+		}
+	}
+</style>
+	<%= yield %>
+<%= render :partial => 'layouts/layout_bottom' %>

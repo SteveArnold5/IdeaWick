@@ -1,0 +1,34 @@
+<table class = "table">
+	<% if @ideas.length == 0 %>
+		<tr><td></td><td>No ideas have been added for this site yet</td></tr>
+	<% end %>
+	<% @ideas.each do |idea| %>
+		<tr>
+			<td>
+				<img src="<%=idea.user.imageUrl%>">
+			</td>
+			<td>
+					<%= auto_link(idea.ideaText) %>
+			</td>
+			<td>
+						<div style="text-align:center;">
+							<%= link_to ({ :controller => "ideas", :action => "vote", :id => idea.id }),{ :method => "post", :class => 'vote_link', :remote => true } do %>
+								<i class="icon-thumbs-up"></i>
+						    <% end %>
+						</div>
+						<div>
+							<span id="vote_count_<%= idea.id %>"><%= idea.votes.count %></span> votes
+						</div>
+						<div>
+							<a id="comment_link_<%= idea.id %>" class="comment_link" href="javascript:void(0);" style="font-size:10px;">Comment</a>
+						</div>
+			</td>
+		</tr>
+			<tr class="comment_panel_row">
+				<td style="background:white;"></td>
+				<td style="background:white;">
+					<%= render '/comments/comment_panel', :idea => idea %>
+				</td>
+			</tr>
+	<% end %>
+</table>

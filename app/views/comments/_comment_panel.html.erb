@@ -1,0 +1,37 @@
+<div id="comment_container_<%= idea.id %>">
+	<table class="comment">
+	<% idea.comments.each do |comment| %>
+		<tr>
+			<td style="width:50px;">
+				<img src="<%=comment.user.imageUrl%>">
+			</td>
+			<td>
+				<div style="height:10px;">
+					<span style="float:right;">
+						<% if(current_user && (comment.user.id == current_user.id))%>
+							<%= link_to 'X',
+							  	comment_path(comment),
+								:class => "hide_if_no_js",
+								:method => :delete,
+								:remote => true
+ 							%>
+						<% end %>
+					</span>
+				</div>
+				<%= auto_link(comment.body) %>
+			</td>
+		</tr>
+	<% end %>
+
+	<tr id="comment_post_panel_<%= idea.id %>" style="display:none;">
+		<td style="width:50px;">
+			<% if current_user %>
+				<img src="<%=current_user.imageUrl %>">
+			<% end %>
+		</td>
+		<td>
+			<%= render '/comments/form', :comment => idea.new_comment %>
+		</td>
+    </tr>
+	</table>
+</div>

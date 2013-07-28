@@ -1,0 +1,30 @@
+<% if current_user %>
+  <span><%= link_to "Sign Out", signout_path %></span>
+<% else %>
+	<% if show_links_only %>
+		Sign in with
+  <% end %>
+		<a href="/auth/facebook">
+			<% if show_links_only %>
+				Facebook
+			<% else %>
+				<div class="provider_button fb_button"> 
+					<img class="sign_in_fb_logo" src="/assets/f_logo.jpg"> 
+					Sign in With Facebook
+				</div>
+			<% end %>
+		</a>
+		<% if show_links_only %>
+			|
+		<% end %>
+		<a href="/auth/twitter"> 
+			<% if show_links_only %>
+				Twitter
+			<% else %>
+				<div class="provider_button twitter_button">
+					<img class="sign_in_twitter_logo" src="/assets/twitter-bird-white-on-blue.png">
+					Sign in With Twitter
+				</div>
+			<% end %>
+		</a>
+<% end %>

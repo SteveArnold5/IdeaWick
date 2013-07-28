@@ -1,0 +1,29 @@
+.main_options .outer_center
+{
+	float:right;
+	position:relative;
+	right:50%;
+}
+
+.main_options .inner_center 
+{
+    float: right;
+    right: -50%;
+    position: relative;
+}
+
+.clear {
+    clear: both;
+}
+
+.main_options .main_option_button
+{
+	display: inline-block;
+	background:whiteSmoke;
+	border-radius:4px;
+	padding:8px;
+	border:1px solid lightGrey;
+	font-size:1.3em;
+	margin:10px;
+	width:190px;
+}

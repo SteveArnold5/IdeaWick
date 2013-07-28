@@ -1,0 +1,38 @@
+<%- model_class = Site.new.class -%>
+<h2>My <%=t '.title', :default => model_class.model_name.human.pluralize %></h2>
+<% if @sites.length == 0 %>
+	<br/>You have not created any sites yet.
+<% 
+   else 
+%>
+	<table class="table table-striped">
+	  <thead>
+	    <tr>
+	      <th><%= model_class.human_attribute_name(:subdomain) %></th>
+	      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <% @sites.each do |site| %>
+	      <tr>
+	        <td>
+							<% host = site.subdomain + '.' + request.domain %>
+		        	<%= link_to host, root_url(:host => host) %>
+					</td>
+	        <td>
+	          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+	                      edit_site_path(site), :class => 'btn btn-mini' %>
+	          <%= link_to 'Delete',
+	                      site_path(site),
+	                      :method => :delete,
+	                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+	                      :class => 'btn btn-mini' %>
+	        </td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+	<%= paginate @sites %>
+<%
+   end
+%>

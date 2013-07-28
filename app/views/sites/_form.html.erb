@@ -1,0 +1,25 @@
+<%= form_for @site, :html => { :class => 'form-horizontal' } do |f| %>
+	<%= render "shared/error_messages", :target => @site %>
+  <div class="control-group">
+    <%= f.label :subdomain, :class => 'control-label' %>
+    <div class="controls">
+	  <div class="input-append">
+	      <%= f.text_field :subdomain, :class => 'text_field', :autofocus=>true, :maxlength => '15', :style => 'width:195px;' %>
+		  <span class="add-on">.<%= request.domain %></span>
+	  </div>
+	  <span class="help-inline">This will be your site's web address</span>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :title, "Headline", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title, :class => 'text_field', :maxlength => '255', :style => 'width:557px;' %>
+			<span class="help-block">Example Headline: Please share your ideas on how to improve our product line</span>
+    </div>  
+  </div>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                sites_path, :class => 'btn' %>
+  </div>
+<% end %>

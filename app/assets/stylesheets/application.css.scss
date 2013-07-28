@@ -1,0 +1,64 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require_tree . 
+*/
+
+@import "bootswatch/cerulean/variables";
+@import "bootstrap";
+@import 'font-awesome';
+
+@import "bootstrap-responsive";
+@import "bootswatch/cerulean/bootswatch";
+.hide_if_no_js
+{
+	display:none;
+}
+.subheader {height:50px;margin-top:60px;}
+.flash-notice { color: green; }
+
+.sign_in_text
+{
+	padding-bottom:30px;
+}
+
+.provider_button
+{
+	color: white;
+	float: left;
+	width:187px;
+}
+
+.fb_button
+{
+	background: #3B5998;
+	margin-right:6px;
+	margin-bottom:5px;
+}
+.sign_in_fb_logo 
+{ 
+	height:25px; 
+	border-right:1px solid #29447E;
+}
+
+.twitter_button
+{
+	background: #3A9CE4;
+}
+.sign_in_twitter_logo 
+{ 
+	height:25px; 
+}
+
+.medium_font
+{
+	font-size:1.3em;
+}
+
+.image_attribution
+{
+	font-size:11px;
+	text-align:center;
+}

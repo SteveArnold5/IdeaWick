@@ -1,0 +1,27 @@
+tr.comment_panel_row td
+{
+	border: 0;
+}
+table.comment
+{
+	width:100%;
+	border-style: solid;
+	border-color: #ddd;
+	border-width: 1px 0 0 0;
+}
+
+table.comment td
+{
+	border-top:1px solid #ddd;
+	border-bottom:0;
+}
+
+table.comment tr:first-child td
+{
+	border-top:0;
+}
+
+table.comment img
+{
+	height:40px;
+}

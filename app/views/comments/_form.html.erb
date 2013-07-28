@@ -1,0 +1,9 @@
+<%= form_for comment, :remote => true do |f| %>
+	<div>
+		<%= f.text_area :body, :rows => "3", :style => "width:98%;height:40px;" %>
+		<div style="float:right;">
+			<%= f.submit "Post Comment", :class => "btn btn-mini btn-custom" %>
+		</div>
+	</div>
+	<input type="hidden" name="idea_id" value="<%=comment.idea.id%>">
+<% end %>

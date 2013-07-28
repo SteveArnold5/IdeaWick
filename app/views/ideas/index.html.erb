@@ -1,0 +1,31 @@
+<%- model_class = Idea.new.class -%>
+<h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+<% if @ideas.length == 0 %>
+	<br/> You haven't created any ideas yet.
+<% else %>
+	<table class="table table-striped">
+	  <thead>
+	    <tr>
+	      <th>Idea</th>
+	      <th>Site</th>
+	      <th></th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <% @ideas.each do |idea| %>
+	      <tr>
+	        <td><%= idea.ideaText %></td>
+	        <td><%= idea.site.subdomain %></td>
+	        <td style="width:90px;">
+			  <%= link_to 'Delete',
+			  	idea_path(idea),
+				:method => :delete,
+				:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+				:class => 'btn btn-mini' %>
+	        </td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+	<%= paginate @ideas %>
+<% end %>

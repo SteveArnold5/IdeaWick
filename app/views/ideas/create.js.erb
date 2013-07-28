@@ -1,0 +1,11 @@
+<% if @idea.errors.any? %>
+	$("#feedback_message").css("color","red");
+	$("#feedback_message").html("Error posting idea.  Please try again.");
+<% else %>
+	$("#idea_ideaText").val("");
+	$("#feedback_message").css("color","green");
+	$("#feedback_message").html("Your idea was posted successfully.");
+	$("#ideaContainer").html("<%= escape_javascript(render(:partial => '/ideas/ideaPanel')) %>");
+	window.bindVoteLinks();
+	window.bindCommentLinks()
+<% end %>

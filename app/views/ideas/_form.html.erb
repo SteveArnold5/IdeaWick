@@ -1,0 +1,17 @@
+<%= form_for @idea, :remote => true do |f| %>
+	<%= render "shared/error_messages", :target => @idea %>
+	<div>
+		<%= f.text_area :ideaText, :rows => "3", :style => "width:100%;height:50px;", :autofocus=>true %>
+		<div style="float:left;">
+			<% if current_user != nil && current_user.provider == "facebook" %>
+				<%= check_box_tag("post_to_facebook","yes", true) %>&nbsp;Post to Facebook
+			<% end %>
+		</div>
+		<div style="float:right;">
+			<%= f.submit "Post Idea", :class => "btn btn-mini btn-custom" %>
+		</div>
+	</div>
+	<input type="hidden" name="site_id" value="<%=@idea.site.id%>">
+	<input type="hidden" name="page" value="<%= @ideas.current_page %>">
+<% end %>
+<div id="feedback_message"></div>
